@@ -8,4 +8,4 @@ out
 npm-debug.log*
 pnpm-debug.log*
 
-.tsbuildinfo
+*.tsbuildinfo
