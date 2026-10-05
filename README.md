@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LEVI-AUT
 
-## Getting Started
+Premium dark-first authentication surface built with Next.js, TypeScript, Tailwind CSS and Supabase Auth.
 
-First, run the development server:
+## Local setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+cp .env.example .env.local
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` in `.env.local`. Keep the service-role key out of the frontend.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Optional OAuth providers are controlled by `NEXT_PUBLIC_ENABLED_OAUTH_PROVIDERS`, for example `google,github`. Only providers listed there render in the UI; they must also be enabled and configured in Supabase Authentication → Providers.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Supabase dashboard settings
 
-## Learn More
+Add these URLs under Authentication → URL Configuration:
 
-To learn more about Next.js, take a look at the following resources:
+- Local: `http://localhost:3000/auth/callback`
+- Production: `https://YOUR_VERCEL_DOMAIN/auth/callback`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Set the Site URL to the production URL once deployed. For OAuth, copy the provider callback URL shown by Supabase into the provider console.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Vercel
 
-## Deploy on Vercel
+Import the GitHub repository into Vercel and add the same environment variables. Deploy with the default Next.js settings. The production URL must be added to Supabase Redirect URLs before testing OAuth, magic links and password reset.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Current scope
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Real email/password authentication
+- Magic link flow
+- Password reset email flow
+- OAuth callback infrastructure
+- Configurable, non-fake OAuth provider buttons
+- Session persistence and refresh middleware
+- English/Arabic UI with RTL support
+- Temporary authenticated dashboard with provider and logout
