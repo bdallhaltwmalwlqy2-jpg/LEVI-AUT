@@ -1,1 +1,1 @@
-{"routes":[{"path":"/","title":"LEVI-AUT Login"},{"path":"/auth/callback","title":"Authentication callback"}]}
+{"routes":[{"path":"/","title":"LEVI-AUT Login"},{"path":"/coming-soon","title":"LEVI-AUT Coming Soon"},{"path":"/auth/callback","title":"Authentication callback"}]}

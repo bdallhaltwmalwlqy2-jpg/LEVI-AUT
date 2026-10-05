@@ -30,10 +30,13 @@ Import the GitHub repository into Vercel and add the same environment variables.
 ## Current scope
 
 - Real email/password authentication
+- Real email/password registration with password confirmation and email verification
 - Magic link flow
+- Phone SMS OTP flow (requires an SMS provider in Supabase)
 - Password reset email flow
 - OAuth callback infrastructure
 - Configurable, non-fake OAuth provider buttons
 - Session persistence and refresh middleware
 - English/Arabic UI with RTL support
 - Temporary authenticated dashboard with provider and logout
+- Authenticated `/coming-soon` destination after login, signup, magic link, phone OTP and OAuth
