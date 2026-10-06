@@ -86,7 +86,7 @@ export default function AuthPanel() {
           ? await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: `${origin}/auth/callback?next=/coming-soon` } })
           : await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${origin}/auth/callback?next=/coming-soon` })
     setLoading(false)
-    if (result.error) return setMessage({ type: 'error', text: result.error.message.toLowerCase().includes('invalid') ? t.invalid : result.error.message })
+    if (result.error) return setMessage({ type: 'error', text: mode === 'login' && result.error.message.toLowerCase().includes('invalid') ? t.invalid : result.error.message })
     if (mode === 'signup' && 'data' in result && (result.data as { session?: unknown }).session) return complete()
     setMessage({ type: 'success', text: mode === 'signup' ? t.registered : mode === 'magic' ? t.sent : mode === 'reset' ? t.resetSent : 'Authenticated.' })
     if (mode === 'login') complete()
